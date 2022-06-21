@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -47,7 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -61,19 +60,23 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -82,13 +85,15 @@
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -269,23 +274,23 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Location = new System.Drawing.Point(3, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
@@ -305,16 +310,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Penghuni";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.splitContainer3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 48);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(992, 599);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Pemesanan";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
@@ -450,6 +445,16 @@
             this.label10.Text = "Nama";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.splitContainer3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 48);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(992, 599);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Pemesanan";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -458,18 +463,26 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.splitContainer3.Panel1.Controls.Add(this.dateTimePicker1);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox5);
+            this.splitContainer3.Panel1.Controls.Add(this.label17);
+            this.splitContainer3.Panel1.Controls.Add(this.label16);
+            this.splitContainer3.Panel1.Controls.Add(this.comboBox5);
+            this.splitContainer3.Panel1.Controls.Add(this.comboBox4);
             this.splitContainer3.Panel1.Controls.Add(this.button7);
             this.splitContainer3.Panel1.Controls.Add(this.comboBox3);
-            this.splitContainer3.Panel1.Controls.Add(this.label11);
             this.splitContainer3.Panel1.Controls.Add(this.label12);
             this.splitContainer3.Panel1.Controls.Add(this.button8);
             this.splitContainer3.Panel1.Controls.Add(this.button9);
-            this.splitContainer3.Panel1.Controls.Add(this.richTextBox3);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox5);
-            this.splitContainer3.Panel1.Controls.Add(this.textBox6);
             this.splitContainer3.Panel1.Controls.Add(this.label13);
             this.splitContainer3.Panel1.Controls.Add(this.label14);
             this.splitContainer3.Panel1.Controls.Add(this.label15);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.splitContainer3.Panel2.Controls.Add(this.dataGridView2);
             this.splitContainer3.Size = new System.Drawing.Size(992, 599);
             this.splitContainer3.SplitterDistance = 330;
             this.splitContainer3.TabIndex = 0;
@@ -489,20 +502,10 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Tersedia",
             "Tidak tersedia"});
-            this.comboBox3.Location = new System.Drawing.Point(93, 144);
+            this.comboBox3.Location = new System.Drawing.Point(93, 307);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(217, 33);
             this.comboBox3.TabIndex = 21;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(8, 149);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 22);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Status";
             // 
             // label12
             // 
@@ -516,12 +519,13 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(195, 407);
+            this.button8.Location = new System.Drawing.Point(175, 407);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(85, 40);
+            this.button8.Size = new System.Drawing.Size(99, 40);
             this.button8.TabIndex = 18;
             this.button8.Text = "Ubah";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -532,37 +536,15 @@
             this.button9.Text = "Tambah";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Location = new System.Drawing.Point(12, 229);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(301, 133);
-            this.richTextBox3.TabIndex = 17;
-            this.richTextBox3.Text = "";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(93, 88);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(217, 30);
-            this.textBox5.TabIndex = 16;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(93, 29);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(217, 30);
-            this.textBox6.TabIndex = 15;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(12, 204);
+            this.label13.Location = new System.Drawing.Point(8, 151);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 22);
+            this.label13.Size = new System.Drawing.Size(176, 22);
             this.label13.TabIndex = 14;
-            this.label13.Text = "Fasilitas";
+            this.label13.Text = "Tanggal Pemesanan";
             // 
             // label14
             // 
@@ -570,9 +552,9 @@
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(8, 93);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 22);
+            this.label14.Size = new System.Drawing.Size(86, 22);
             this.label14.TabIndex = 13;
-            this.label14.Text = "Harga";
+            this.label14.Text = "Penghuni";
             // 
             // label15
             // 
@@ -580,9 +562,77 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label15.Location = new System.Drawing.Point(8, 34);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 22);
+            this.label15.Size = new System.Drawing.Size(62, 22);
             this.label15.TabIndex = 11;
-            this.label15.Text = "Nama";
+            this.label15.Text = "Kamar";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Tersedia",
+            "Tidak tersedia"});
+            this.comboBox4.Location = new System.Drawing.Point(93, 88);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(217, 33);
+            this.comboBox4.TabIndex = 23;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "Tersedia",
+            "Tidak tersedia"});
+            this.comboBox5.Location = new System.Drawing.Point(93, 29);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(217, 33);
+            this.comboBox5.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(8, 258);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 22);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Nominal";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(8, 312);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 22);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "Status";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(30, 29);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.RowTemplate.Height = 33;
+            this.dataGridView2.Size = new System.Drawing.Size(602, 225);
+            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(93, 253);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(217, 30);
+            this.textBox5.TabIndex = 27;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "MMMM dd, yyyy";
+            this.dateTimePicker1.Location = new System.Drawing.Point(8, 191);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(300, 30);
+            this.dateTimePicker1.TabIndex = 28;
             // 
             // Form1
             // 
@@ -603,15 +653,17 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -651,15 +703,18 @@
         private SplitContainer splitContainer3;
         private Button button7;
         private ComboBox comboBox3;
-        private Label label11;
         private Label label12;
         private Button button8;
         private Button button9;
-        private RichTextBox richTextBox3;
-        private TextBox textBox5;
-        private TextBox textBox6;
         private Label label13;
         private Label label14;
         private Label label15;
+        private Label label17;
+        private Label label16;
+        private ComboBox comboBox5;
+        private ComboBox comboBox4;
+        private DateTimePicker dateTimePicker1;
+        private TextBox textBox5;
+        private DataGridView dataGridView2;
     }
 }
