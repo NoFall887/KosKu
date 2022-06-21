@@ -5,7 +5,7 @@ namespace KosKu
 {
     public partial class Form1 : Form
     {
-        String connStr = "Host=127.0.0.1;Port=5433;Database=kosku;Username=admin;Password=adminadmin;";
+        String connStr = "Host=localhost;Port=5432;Database=kosku;Username=postgres;Password=fadil071100;";
         int selectedRoomId = 0;
         public Form1()
         {
@@ -154,6 +154,16 @@ namespace KosKu
                 Debug.WriteLine(ex.Message);
             }
             bindData();
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     } 
 }
