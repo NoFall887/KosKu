@@ -593,13 +593,14 @@
             this.button7.TabIndex = 22;
             this.button7.Text = "Hapus";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "Tersedia",
-            "Tidak tersedia"});
+            "Sudah Bayar",
+            "Belum Bayar"});
             this.comboBox3.Location = new System.Drawing.Point(93, 307);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(217, 24);
@@ -633,6 +634,7 @@
             this.button9.TabIndex = 12;
             this.button9.Text = "Tambah";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label13
             // 
@@ -745,6 +747,7 @@
         private ComboBox comboBox5;
         private ComboBox comboBox4;
         private DateTimePicker dateTimePicker1;
+        private DataGridView dataGridView2;
         private TextBox textBox5;
         private DataGridView dataGridView2;
         private Label label6;
