@@ -11,6 +11,7 @@ namespace KosKu
         {
             InitializeComponent();
             bindData();
+            bindData3();
             
         }
 
@@ -33,6 +34,35 @@ namespace KosKu
                     
                     dataGridView1.DataSource = dt;
                     
+                    cmd.Dispose();
+                    connection.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+        void bindData3()
+        {
+
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "select id_kamar, id_penghuni, tanggal_pemesanan, nominal, keterangan from pemesanan join status using(id_status) join kamar using (id_kamar) join penghuni using (id_penghuni)";
+                    cmd.CommandType = CommandType.Text;
+                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView2.DataSource = dt;
+
                     cmd.Dispose();
                     connection.Close();
 
@@ -168,12 +198,98 @@ namespace KosKu
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            string idStatus = comboBox3.SelectedIndex.ToString();
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "update pemesanan set id_kamar=@nama_kamar, id_penghuni=@id_penghuni, tanggal_pemesanan=@tanggal, nominal=@nominal, id_status=@id_status, where id_pemesanan=@id_pemesanan";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", Convert.ToInt32(comboBox5.SelectedIndex + 1)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(comboBox4.SelectedIndex + 1)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@tanggal", dateTimePicker1.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@nominal", Convert.ToInt64(textBox5.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 1)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_pemesanan", this.selectedRoomId));
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            bindData3();
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "insert into pemesanan (id_kamar, id_penghuni, tanggal_pemesanan, nominal, id_status) values(@id_kamar, @id_penghuni, @tanggal, @nominal, @id_status)";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", Convert.ToInt32(comboBox5.SelectedIndex + 1)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(comboBox4.SelectedIndex + 1)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@tanggal", dateTimePicker1.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@nominal", Convert.ToInt64(textBox5.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 1)));
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                label12.Text = ex.Message;
+            }
+            bindData3();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "delete from pemesanan where id_pemesanan=@id_pemesaan";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_pemesanan", this.selectedRoomId));
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    connection.Close();
+                }
+
+                textBox5.Text = "";
+                comboBox3.SelectedIndex = -1;
+                comboBox4.SelectedIndex = -1;
+                comboBox5.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            bindData3();
         }
     } 
 }

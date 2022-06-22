@@ -62,6 +62,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -70,13 +75,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -487,6 +487,58 @@
             this.splitContainer3.SplitterDistance = 330;
             this.splitContainer3.TabIndex = 0;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "MMMM dd, yyyy";
+            this.dateTimePicker1.Location = new System.Drawing.Point(8, 191);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(300, 30);
+            this.dateTimePicker1.TabIndex = 28;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(8, 312);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 22);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "Status";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(8, 258);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 22);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Nominal";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "kamar 1",
+            "kamar 2",
+            "kamar 3"});
+            this.comboBox5.Location = new System.Drawing.Point(93, 29);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(217, 33);
+            this.comboBox5.TabIndex = 24;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Fadil",
+            "Naufal",
+            "Zuhdhan"});
+            this.comboBox4.Location = new System.Drawing.Point(93, 88);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(217, 33);
+            this.comboBox4.TabIndex = 23;
+            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(30, 464);
@@ -495,13 +547,14 @@
             this.button7.TabIndex = 22;
             this.button7.Text = "Hapus";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "Tersedia",
-            "Tidak tersedia"});
+            "Sudah Bayar",
+            "Belum Bayar"});
             this.comboBox3.Location = new System.Drawing.Point(93, 307);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(217, 33);
@@ -535,6 +588,7 @@
             this.button9.TabIndex = 12;
             this.button9.Text = "Tambah";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label13
             // 
@@ -566,48 +620,6 @@
             this.label15.TabIndex = 11;
             this.label15.Text = "Kamar";
             // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "Tersedia",
-            "Tidak tersedia"});
-            this.comboBox4.Location = new System.Drawing.Point(93, 88);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(217, 33);
-            this.comboBox4.TabIndex = 23;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "Tersedia",
-            "Tidak tersedia"});
-            this.comboBox5.Location = new System.Drawing.Point(93, 29);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(217, 33);
-            this.comboBox5.TabIndex = 24;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(8, 258);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(75, 22);
-            this.label16.TabIndex = 25;
-            this.label16.Text = "Nominal";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(8, 312);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 22);
-            this.label17.TabIndex = 26;
-            this.label17.Text = "Status";
-            // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -625,14 +637,6 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(217, 30);
             this.textBox5.TabIndex = 27;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "MMMM dd, yyyy";
-            this.dateTimePicker1.Location = new System.Drawing.Point(8, 191);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(300, 30);
-            this.dateTimePicker1.TabIndex = 28;
             // 
             // Form1
             // 
@@ -714,7 +718,7 @@
         private ComboBox comboBox5;
         private ComboBox comboBox4;
         private DateTimePicker dateTimePicker1;
-        private TextBox textBox5;
         private DataGridView dataGridView2;
+        private TextBox textBox5;
     }
 }
