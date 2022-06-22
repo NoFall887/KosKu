@@ -5,7 +5,7 @@ namespace KosKu
 {
     public partial class Form1 : Form
     {
-        String connStr = "Host=localhost;Port=5432;Database=kosku;Username=postgres;Password=fadil071100;";
+        String connStr = "Host=localhost;Port=5432;Database=kosku;Username=postgres;Password=TupperWhere19;";
         int selectedRoomId = 0;
         int selectedPenghuniId = 0;
         int selectedPemesananId = 0;
@@ -236,8 +236,8 @@ namespace KosKu
                     cmd.Connection = connection;
                     cmd.CommandText = "update pemesanan set id_kamar=@id_kamar, id_penghuni=@id_penghuni, tanggal_pemesanan=@tanggal, nominal=@nominal, id_status=@id_status where id_pemesanan=@id_pemesanan";
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", textBox3.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", textBox4.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", Convert.ToInt32(textBox3.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(textBox4.Text)));
                     cmd.Parameters.Add(new NpgsqlParameter("@tanggal", dateTimePicker1.Value));
                     cmd.Parameters.Add(new NpgsqlParameter("@nominal", Convert.ToInt64(textBox5.Text)));
                     cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 1)));
@@ -250,6 +250,7 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                label12.Text = ex.Message;
             }
             bindData();
         }
