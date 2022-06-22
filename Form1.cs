@@ -240,7 +240,7 @@ namespace KosKu
                     cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(textBox4.Text)));
                     cmd.Parameters.Add(new NpgsqlParameter("@tanggal", dateTimePicker1.Value));
                     cmd.Parameters.Add(new NpgsqlParameter("@nominal", Convert.ToInt64(textBox5.Text)));
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 1)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 3)));
                     cmd.Parameters.Add(new NpgsqlParameter("@id_pemesanan", this.selectedPemesananId));
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
@@ -287,10 +287,9 @@ namespace KosKu
                     cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(textBox4.Text)));
                     cmd.Parameters.Add(new NpgsqlParameter("@tanggal", dateTimePicker1.Value));
                     cmd.Parameters.Add(new NpgsqlParameter("@nominal", Convert.ToInt64(textBox5.Text)));
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 1)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 3)));
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
-                    connection.Close();
                 }
             }
             catch (Exception ex)
@@ -352,7 +351,7 @@ namespace KosKu
                     cmd.Parameters.Add(new NpgsqlParameter("@nama_lengkap", textBox_NamaPenghuni.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@alamat", textBox_AlamatPenghuni.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@nik", Convert.ToInt64(textBox_NikPenghuni.Text)));
-                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", Convert.ToInt32(textBox_NoHpPenghuni.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", Convert.ToInt64(textBox_NoHpPenghuni.Text)));
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
                     connection.Close();
