@@ -5,8 +5,9 @@ namespace KosKu
 {
     public partial class Form1 : Form
     {
-        String connStr = "Host=localhost;Port=5432;Database=kosku;Username=postgres;Password=fadil071100;";
+        String connStr = "Host=localhost;Port=5432;Database=kosku;Username=postgres;Password=TupperWhere19;";
         int selectedRoomId = 0;
+        int selectedPenghuniId = 0;
         public Form1()
         {
             InitializeComponent();
@@ -42,6 +43,35 @@ namespace KosKu
             {
                 Debug.WriteLine(ex.Message);
             }
+
+            ///////////////     TABEL PENGHUNI  //////////
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "select id_penghuni, nama_lengkap, alamat, nik, no_hp from penghuni";
+                    cmd.CommandType = CommandType.Text;
+                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView_Penghuni.DataSource = dt;
+
+                    cmd.Dispose();
+                    connection.Close();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                label10.Text = ex.Message;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -174,6 +204,116 @@ namespace KosKu
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void textBox_NamaPenghuni_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_TambahPenghuni_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "insert into penghuni (nama_lengkap, alamat, nik, no_hp) values(@nama_lengkap, @alamat, @nik, @no_hp)";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new NpgsqlParameter("@nama_lengkap", textBox_NamaPenghuni.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@alamat", textBox_AlamatPenghuni.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@nik", Convert.ToInt64(textBox_NikPenghuni.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", Convert.ToInt32(textBox_NoHpPenghuni.Text)));
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                label10.Text = ex.Message;
+            }
+            bindData();
+        }
+
+        private void dataGridView_Penghuni_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dataGridView_Penghuni.Rows[e.RowIndex];
+            String nama_lengkap = row.Cells[1].Value.ToString();
+            String alamat = row.Cells[2].Value.ToString();
+            String nik = row.Cells[3].Value.ToString();
+            String no_hp = row.Cells[4].Value.ToString();
+
+            this.selectedPenghuniId = Convert.ToInt32(row.Cells[0].Value.ToString());
+            textBox_NamaPenghuni.Text = nama_lengkap;
+            textBox_AlamatPenghuni.Text = alamat;
+            textBox_NikPenghuni.Text = nik;
+            textBox_NoHpPenghuni.Text = no_hp;
+        }
+
+        private void btn_UbahPenghuni_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "update penghuni set nama_lengkap=@nama_lengkap, alamat=@alamat, nik=@nik, no_hp=@no_hp where id_penghuni=@id_penghuni";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new NpgsqlParameter("@nama_lengkap", textBox_NamaPenghuni.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@alamat", textBox_AlamatPenghuni.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@nik", Convert.ToInt64(textBox_NikPenghuni.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", Convert.ToInt32(textBox_NoHpPenghuni.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", this.selectedPenghuniId));
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                label10.Text = ex.Message;
+            }
+            bindData();
+        }
+
+        private void btn_HapusPenghuni_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "delete from penghuni where id_penghuni=@id_penghuni";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", this.selectedPenghuniId));
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    connection.Close();
+                }
+
+                textBox_NamaPenghuni.Text = "";
+                textBox_AlamatPenghuni.Text = "";
+                textBox_NikPenghuni.Text = "";
+                textBox_NoHpPenghuni.Text = "";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                label10.Text = ex.Message;
+            }
+            bindData();
         }
     } 
 }
