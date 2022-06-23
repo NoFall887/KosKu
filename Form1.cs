@@ -5,7 +5,7 @@ namespace KosKu
 {
     public partial class Form1 : Form
     {
-        String connStr = "Host=localhost;Port=5432;Database=kosku;Username=postgres;Password=TupperWhere19;";
+        String connStr = "Host=localhost;Port=5433;Database=kosku;Username=admin;Password=adminadmin;";
         int selectedRoomId = 0;
         int selectedPenghuniId = 0;
         int selectedPemesananId = 0;
@@ -13,7 +13,8 @@ namespace KosKu
         {
             InitializeComponent();
             bindData();
-            
+            loadComboboxKamarItem();
+            loadComboboxPenghuniItem();
         }
 
         void bindData()
@@ -128,6 +129,7 @@ namespace KosKu
                 Debug.WriteLine(ex.Message);
                 label4.Text = ex.Message;
             }
+            loadComboboxKamarItem();
             bindData();
         }
 
@@ -179,6 +181,7 @@ namespace KosKu
             {
                 Debug.WriteLine(ex.Message);
             }
+            loadComboboxKamarItem();
             bindData();
         }
 
@@ -210,6 +213,7 @@ namespace KosKu
             {
                 Debug.WriteLine(ex.Message);
             }
+            loadComboboxKamarItem();
             bindData();
         }
 
@@ -236,8 +240,8 @@ namespace KosKu
                     cmd.Connection = connection;
                     cmd.CommandText = "update pemesanan set id_kamar=@id_kamar, id_penghuni=@id_penghuni, tanggal_pemesanan=@tanggal, nominal=@nominal, id_status=@id_status where id_pemesanan=@id_pemesanan";
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", Convert.ToInt32(textBox3.Text)));
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(textBox4.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", Convert.ToInt32(comboBox2.SelectedValue)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(comboBox4.SelectedValue)));
                     cmd.Parameters.Add(new NpgsqlParameter("@tanggal", dateTimePicker1.Value));
                     cmd.Parameters.Add(new NpgsqlParameter("@nominal", Convert.ToInt64(textBox5.Text)));
                     cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 3)));
@@ -257,22 +261,26 @@ namespace KosKu
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
-            String id_kamar  = row.Cells[1].Value.ToString();
-            String id_penghuni = row.Cells[2].Value.ToString();
+            String nama_kamar  = Convert.ToString(row.Cells[1].FormattedValue.ToString());
+            String nama_penghuni = row.Cells[2].Value.ToString();
+            DateTime tanggal = DateTime.Parse(row.Cells[3].Value.ToString());
             String nominal = row.Cells[4].Value.ToString();
             String status = row.Cells[5].Value.ToString();
             status = status[0].ToString().ToUpper() + status.Substring(1);
-
+            
             this.selectedPemesananId = Convert.ToInt32(row.Cells[0].Value.ToString());
+            dateTimePicker1.Value = tanggal;
             comboBox3.SelectedItem = status;
-            textBox3.Text = id_kamar;
-            textBox4.Text = id_penghuni;
+            comboBox2.SelectedIndex = comboBox2.FindStringExact(nama_kamar);
+            comboBox4.SelectedIndex = comboBox4.FindStringExact(nama_penghuni);
             textBox5.Text = nominal;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
+
             try
             {
                 using (NpgsqlConnection connection = new NpgsqlConnection())
@@ -283,8 +291,8 @@ namespace KosKu
                     cmd.Connection = connection;
                     cmd.CommandText = "insert into pemesanan (id_kamar, id_penghuni, tanggal_pemesanan, nominal, id_status) values(@id_kamar, @id_penghuni, @tanggal, @nominal, @id_status)";
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", Convert.ToInt32(textBox3.Text)));
-                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(textBox4.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_kamar", Convert.ToInt32(comboBox2.SelectedValue)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", Convert.ToInt32(comboBox4.SelectedValue)));
                     cmd.Parameters.Add(new NpgsqlParameter("@tanggal", dateTimePicker1.Value));
                     cmd.Parameters.Add(new NpgsqlParameter("@nominal", Convert.ToInt64(textBox5.Text)));
                     cmd.Parameters.Add(new NpgsqlParameter("@id_status", Convert.ToInt32(comboBox3.SelectedIndex + 3)));
@@ -317,9 +325,8 @@ namespace KosKu
                     cmd.Dispose();
                     connection.Close();
                 }
-
-                textBox3.Text = "";
-                textBox4.Text = "";
+                comboBox2.SelectedIndex = -1;
+                comboBox4.SelectedIndex = -1;
                 textBox5.Text = "";
                 comboBox3.SelectedIndex = -1;
             }
@@ -362,6 +369,7 @@ namespace KosKu
                 Debug.WriteLine(ex.Message);
                 label10.Text = ex.Message;
             }
+            loadComboboxPenghuniItem();
             bindData();
         }
 
@@ -407,6 +415,7 @@ namespace KosKu
                 Debug.WriteLine(ex.Message);
                 label10.Text = ex.Message;
             }
+            loadComboboxPenghuniItem();
             bindData();
         }
 
@@ -438,7 +447,72 @@ namespace KosKu
                 Debug.WriteLine(ex.Message);
                 label10.Text = ex.Message;
             }
+            loadComboboxPenghuniItem();
             bindData();
+        }
+
+        private void loadComboboxKamarItem()
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "select * from kamar";
+                    cmd.CommandType = CommandType.Text;
+                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    comboBox2.DisplayMember = "nama_kamar";
+                    comboBox2.ValueMember = "id_kamar";
+                    comboBox2.DataSource = dt;
+                    cmd.Dispose();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+        private void loadComboboxPenghuniItem()
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection())
+                {
+                    connection.ConnectionString = connStr;
+                    connection.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "select * from penghuni";
+                    cmd.CommandType = CommandType.Text;
+                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Dispose();
+                    connection.Close();
+                    comboBox4.DataSource = ds.Tables[0];
+                    comboBox4.DisplayMember = "nama_lengkap";
+                    
+                    comboBox4.ValueMember = "id_penghuni";
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label12.Text = comboBox2.SelectedItem.ToString();
         }
     } 
 }
