@@ -5,7 +5,7 @@ namespace KosKu
 {
     public partial class Form1 : Form
     {
-        String connStr = "Host=localhost;Port=5433;Database=kosku;Username=admin;Password=adminadmin;";
+        String connStr = "Host=localhost;Port=5432;Database=kosku;Username=postgres;Password=TupperWhere19;";
         int selectedRoomId = 0;
         int selectedPenghuniId = 0;
         int selectedPemesananId = 0;
@@ -71,7 +71,6 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label10.Text = ex.Message;
             }
 
             ////TABEL PEMESANAN///
@@ -127,7 +126,6 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label4.Text = ex.Message;
             }
             loadComboboxKamarItem();
             bindData();
@@ -217,10 +215,6 @@ namespace KosKu
             bindData();
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void label12_Click(object sender, EventArgs e)
         {
@@ -254,7 +248,6 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label12.Text = ex.Message;
             }
             bindData();
         }
@@ -303,7 +296,6 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label12.Text = ex.Message;
             }
             bindData();
         }
@@ -325,15 +317,14 @@ namespace KosKu
                     cmd.Dispose();
                     connection.Close();
                 }
-                comboBox2.SelectedIndex = -1;
                 comboBox4.SelectedIndex = -1;
                 textBox5.Text = "";
                 comboBox3.SelectedIndex = -1;
+                comboBox2.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label10.Text = ex.Message;
             }
             bindData();
         }
@@ -367,7 +358,6 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label10.Text = ex.Message;
             }
             loadComboboxPenghuniItem();
             bindData();
@@ -403,7 +393,7 @@ namespace KosKu
                     cmd.Parameters.Add(new NpgsqlParameter("@nama_lengkap", textBox_NamaPenghuni.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@alamat", textBox_AlamatPenghuni.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@nik", Convert.ToInt64(textBox_NikPenghuni.Text)));
-                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", Convert.ToInt32(textBox_NoHpPenghuni.Text)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", Convert.ToInt64(textBox_NoHpPenghuni.Text)));
                     cmd.Parameters.Add(new NpgsqlParameter("@id_penghuni", this.selectedPenghuniId));
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
@@ -413,7 +403,6 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label10.Text = ex.Message;
             }
             loadComboboxPenghuniItem();
             bindData();
@@ -445,7 +434,6 @@ namespace KosKu
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                label10.Text = ex.Message;
             }
             loadComboboxPenghuniItem();
             bindData();
@@ -512,7 +500,12 @@ namespace KosKu
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label12.Text = comboBox2.SelectedItem.ToString();
+            //label12.Text = comboBox2.SelectedItem.ToString();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     } 
 }
